@@ -1,8 +1,11 @@
-.. _installisoel6:
+.. _installisoel7:
 
 ============================
-A partir de Centreon ISO el6
+A partir de Centreon ISO el7
 ============================
+
+.. note::
+   L'installation à partir de l'image ISO el6 est décrite :ref:`ici<installisoel6>`
 
 ************
 Installation
@@ -11,109 +14,173 @@ Installation
 Etape 1 : Démarrage
 ====================
 
-Afin d'installer, démarrez votre serveur sur l'image ISO el6.
-Démarrez avec l'option **Install or upgrade an existing system**
+Afin d'installer Centreon, démarrez votre serveur sur l'image ISO de Centreon 
+en version el7.
+Démarrez avec l'option **Install CentOS 7** :
 
-.. image :: /images/guide_utilisateur/abootmenu.png
-   :align: center
-   :scale: 65%
-
-Cliquez sur **Next**
-
-.. image :: /images/guide_utilisateur/adisplayicon.png
+.. image :: /images/guide_utilisateur/01_bootmenu.png
    :align: center
    :scale: 65%
 
 Etape 2 : Choix de la langue
 ============================
 
-Choisissez votre langue et cliquez sur **Next**.
+Choisissez la langue du processus d'installation puis cliquez sur **Done** :
 
-.. image :: /images/guide_utilisateur/ainstalllanguage.png
+.. image :: /images/guide_utilisateur/02_select_install_lang.png
    :align: center
    :scale: 65%
 
-Sélectionnez le clavier utilisé par votre système puis cliquez sur **Suivant**.
-
-.. image :: /images/guide_utilisateur/akeyboard.png
-   :align: center
-   :scale: 65%
-
-Etape 3 : Configuration générale
-================================
-
-En fonction du type de stockage désiré, choisissez les options nécessaires pour disposer du partitionnement qui vous convient le mieux.
-
-.. image :: /images/guide_utilisateur/adatastore1.png
-   :align: center
-   :scale: 65%
-
-Un message d'avertissement peut apparaître
-
-.. image :: /images/guide_utilisateur/adatastore2.png
-   :align: center
-   :scale: 65%
-
-Choisissez le nom d'hôte de votre machine et cliquez sur **Configurer le réseau** afin de pouvoir modifier les paramètres de votre carte réseau.
-
-Sélectionnez la carte réseau que vous souhaitez configurer et rendez-vous dans l'onglet "Paramètres IPv4" ou "Paramètres IPv6" (en fonction du besoin)
-afin de configurer l'adresse IP des interfaces. Cliquez sur **Appliquer...** afin d'enregistrer les modifications.
-
-.. image :: /images/guide_utilisateur/anetworkconfig.png
-   :align: center
-   :scale: 65%
-
-Cliquez sur **Fermer** puis sur **Suivant** afin de continuer.
-
-Sélectionnez votre fuseau horaire puis cliquez sur **Suivant**.
-
-.. image :: /images/guide_utilisateur/afuseauhoraire.png
-   :align: center
-   :scale: 65%
-
-Entrez le mot de passe désiré du compte 'root', puis cliquez sur **Suivant**.
-
-Sélectionnez les options de partitionnement qui vous conviennent le mieux. Puis validez.
-
-.. image :: /images/guide_utilisateur/apartitionning.png
-   :align: center
-   :scale: 65%
-
-Etape 4 : Sélection des composants
+Etape 3 : Sélection des composants
 ==================================
 
-Choix du type de serveur
-------------------------
+Cliquez sur le menu **Installation Type** : 
 
-Il est possible de choisir différentes options à la question **Which server type would you like to install ?** :
+.. image :: /images/guide_utilisateur/03_menu_type_install.png
+   :align: center
+   :scale: 65%
 
-.. image :: /images/guide_utilisateur/aservertoinstall.png
+Il est possible de choisir différentes options :
+
+.. image :: /images/guide_utilisateur/04_form_type_install.png
    :align: center
    :scale: 65%
 
 |
 
+ * **Central with database** : Installe Centreon (interface web + base de données) ainsi que l'ordonnanceur et le broker
+ * **Central without database** : Installe Centreon (interface web uniquement) ainsi que l'ordonnanceur et le broker
+ * **Poller** : Installe le serveur satellite (ordonnanceur et broker uniquement)
+ * **Database only** : Installe le serveur de base de données (utilisé en complément avec l'option **Central server without database**)
 
-* Central server with database : Installe Centreon (interface web + base de données) ainsi que l'ordonnanceur et le broker
-* Central server without database : Installe Centreon (interface web uniquement) ainsi que l'ordonnanceur et le broker
-* Poller server : Installe le serveur satellite (ordonnanceur et broker uniquement)
-* Database server : Installe le serveur de base de données (utilisé en complément avec l'option **Central server without database**)
+Etape 4 : Configuration système
+===============================
 
-Une fois toutes ces options choisies, l'installation démarre.
+Partitionnement des disques
+---------------------------
 
-.. image :: /images/guide_utilisateur/arpminstall.png
+Cliquez sur le menu **Installation Destination** :
+
+.. image :: /images/guide_utilisateur/05_menu_filesystem.png
    :align: center
    :scale: 65%
 
-Lorsque l'installation est terminée, cliquez sur **Redémarrer**.
+Sélectionnez le disque dur et l'option **I will configure partitioning** puis cliquez sur "**Done** :
 
-.. image :: /images/guide_utilisateur/arestartserver.png
+.. image :: /images/guide_utilisateur/06_select_disk.png
    :align: center
    :scale: 65%
+
+A l'aide du bouton **+** créer votre partitionnement suivant les :ref:`prérequits de la documentation<diskspace>` puis cliquez sur **Done** :
+
+.. image :: /images/guide_utilisateur/07_partitioning_filesystem.png
+   :align: center
+   :scale: 65%
+
+Une fenêtre de confirmation appraît, cliquez sur **Accept Changes** pour valider le partitionnement :
+
+.. image :: /images/guide_utilisateur/08_apply_changes.png
+   :align: center
+   :scale: 65%
+
+Configuration réseau
+--------------------
+
+Cliquez sur le menu **Network & Hostname** :
+
+.. image :: /images/guide_utilisateur/09_menu_network.png
+   :align: center
+   :scale: 65%
+
+Activez toutes les cartes réseaux, saisissez le nom de votre serveur puis cliquez sur **Done** :
+
+.. image :: /images/guide_utilisateur/10_network_hostname.png
+   :align: center
+   :scale: 65%
+
+Configuration du fuseau horaire
+-------------------------------
+
+Cliquez sur le menu **Date & Time** :
+
+.. image :: /images/guide_utilisateur/11_menu_timezone.png
+   :align: center
+   :scale: 65%
+
+Sélectionnez votre fuseau horaire et cliquez sur le bouton de configuration :
+
+.. image :: /images/guide_utilisateur/12_select_timzeone.png
+   :align: center
+   :scale: 65%
+
+Activez ou ajouter des serveurs NTP, cliquez sur **OK** puis **Done** :
+
+.. image :: /images/guide_utilisateur/13_enable_ntp.png
+   :align: center
+   :scale: 65%
+
+Démarrage de l'installation
+---------------------------
+
+Une fois toutes les options configurées, cliquez sur **Begin Installation** :
+
+.. image :: /images/guide_utilisateur/14_begin_install.png
+   :align: center
+   :scale: 65%
+
+Cliquez sur **Root Password** :
+
+.. image :: /images/guide_utilisateur/15_menu_root_password.png
+   :align: center
+   :scale: 65%
+
+Saissisez et confirmez le mot de passe de l'utilisateur **root**. Cliquez sur **Done** :
+
+.. image :: /images/guide_utilisateur/16_define_root_password.png
+   :align: center
+   :scale: 65%
+
+Patientez pendant le processus d'installation :
+
+.. image :: /images/guide_utilisateur/17_wait_install.png
+   :align: center
+   :scale: 65%
+
+Lorsque l'installation est terminée, cliquez sur **Reboot**.
+
+.. image :: /images/guide_utilisateur/18_reboot_server.png
+   :align: center
+   :scale: 65%
+
+
+Mise à jour du système d'exploitation
+-------------------------------------
+
+Connectez-vous via un terminal et exécutez la commande :
+  ::
+
+  # yum update
+
+.. image :: /images/guide_utilisateur/19_update_system.png
+   :align: center
+   :scale: 65%
+
+Acceptez toutes les clés GPG proposées :
+
+.. image :: /images/guide_utilisateur/20_accept_gpg_key.png
+   :align: center
+   :scale: 65%
+
+Redémarrez votre système avec la commande :
+  ::
+
+  # reboot
 
 *************
 Configuration
 *************
+
+.. _installation_web_ces:
 
 Via l'interface web
 ===================
@@ -129,7 +196,6 @@ L'assistant de fin d'installation de Centreon contrôle la disponibilité des mo
 
 .. image :: /images/guide_utilisateur/acentreoncheckmodules.png
    :align: center
-   :scale: 65%
 
 Cliquez sur **Next**.
 
@@ -183,78 +249,6 @@ Effectuez l'opération ci-dessous :
 
 L'assistant de fin d'installation configure les bases de données, cliquez sur **Next**.
 
-.. image :: /images/guide_utilisateur/adbconf.png
-   :align: center
-   :scale: 65%
-
-L'installation est terminée, cliquez sur **Finish**.
-
-À cette étape une publicité permet de connaitre les dernières nouveautés de Centreon. Si votre plate-forme est connectée à Internet vous disposez des dernières informations, sinon l’information présente dans cette version sera proposée.
-
-.. image :: /images/guide_utilisateur/aendinstall.png
-   :align: center
-   :scale: 65%
-
-Vous pouvez maintenant vous connecter.
-
-.. image :: /images/guide_utilisateur/aconnection.png
-   :align: center
-   :scale: 65%
-
-Configuration de base
-=====================
-
-Dans un premier temps, il est nécessaire de passer l'interface en version française. Pour cela :
-
-1. Connectez-vous avec l'utilisateur 'root' sur votre serveur
-2. Installez le paquet de traduction en langue française avec la commande suivante
-
-::
-
-	yum -y install centreon-lang-fr_FR
-
-3. Rendez-vous dans le menu **Administration** ==> **Options**
-4. Dans le menu de gauche cliquez sur **My Account**
-5. Dans le champ **Language**, remplacez **en_US** par **fr_FR.UTF-8**
-6. Cliquez sur **Save**
-
-.. image :: /images/guide_utilisateur/alanguage.png
-   :align: center
-
-Démarrer la supervision
-=======================
-
-Pour démarrer l'ordonnanceur de supervision :
-
- 1. Sur l'interface web, rendez-vous dans le menu **Configuration** ==> **Moteur de supervision**
- 2. Laissez les options par défaut, et cliquez sur **Exporter**
- 3. Décochez **Générer les fichiers de configuration** et **Lancer le débogage du moteur de supervision (-v)**
- 4. Cochez **Déplacer les fichiers générés** ainsi que **Redémarrer l'ordonnanceur**
- 5. Cliquez à nouveau sur **Exporter**
- 6. Connectez-vous avec l'utilisateur 'root' sur votre serveur
- 7. Démarrez le composant Centreon Broker
-
-  ::
-
-    service cbd start
-
- 8. Démarrez Centreon Engine
-
-  ::
-
-    service centengine start
-
- 9. Démarrez centcore
-
-  ::
-
-    service centcore start
-
-La supervision est maintenant opérationnelle.
-
-Découverte de l'interface web
-=============================
-
 L'interface web de Centreon est composée de plusieurs menus, chaque menu à une fonction bien précise :
 
 .. image :: /images/guide_utilisateur/amenu.png
@@ -268,21 +262,6 @@ L'interface web de Centreon est composée de plusieurs menus, chaque menu à une
 * Le menu **Rapports** permet de visualiser de manière intuitive (via des diagrammes) l'évolution de la supervision sur une période donnée
 * Le menu **Configuration** permet de configurer l'ensemble des éléments supervisés ainsi que l'infrastructure de supervision
 * Le menu **Administration** permet de configurer l'interface web Centreon ainsi que de visualiser l'état général des serveurs
-
-Avant d'aller plus loin
-=======================
-
-Avant d'aller plus loin, il est nécessaire de faire une mise à jour du serveur. Pour cela :
-
- #.	Connectez-vous en tant que 'root' sur le serveur central
- #.	Tapez la commande
-
-::
-
-    yum -y update
-
-
-Laissez la mise à jour se faire puis redémarrer le serveur dans le cas d'une mise à jour du noyau.
 
 ***************************************
 Configurez votre supervision facilement
